@@ -1,0 +1,10 @@
+SELECT * FROM employee WHERE LastName = 'Mynttinen';
+SELECT * FROM employee WHERE LastName = 'Virtanen';
+SELECT * FROM employee WHERE LastName = 'Rojola';
+SELECT * FROM employee WHERE LastName = 'Ahola';
+SELECT * FROM employee WHERE LastName = 'Mikkonen';
+SELECT * FROM employee WHERE LastName = 'Mäki-Tuuri';
+SELECT * FROM employee WHERE LastName = 'Joeli';
+SELECT * FROM employee WHERE LastName = 'Palmu';
+SELECT * FROM employee WHERE LastName = 'Koivistoinen';
+SELECT * FROM employee WHERE LastName = 'Havia-Ahonen';
