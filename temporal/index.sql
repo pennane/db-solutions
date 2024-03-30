@@ -18,7 +18,8 @@ CREATE TABLE customer (
   PERIOD FOR subscription_period(subscription_startdate, subscription_enddate),
   service_id INT,
   CONSTRAINT `fk_customer_service` FOREIGN KEY (service_id) REFERENCES service (id),
-  UNIQUE (id, subscription_period WITHOUT OVERLAPS)
+  UNIQUE (id, subscription_period WITHOUT OVERLAPS),
+  PRIMARY KEY (id, subscription_startdate)
 ) WITH SYSTEM VERSIONING;
 
 -- 2.
@@ -72,7 +73,7 @@ VALUES (
   );
 ;
 
-
+SELECT SLEEP(3);
 
 -- 3.
 UPDATE customer FOR PORTION OF subscription_period
@@ -88,7 +89,7 @@ FROM customer FOR SYSTEM_TIME ALL;
 
 
 -- 4.
-SELECT SLEEP(4);
+SELECT SLEEP(2);
 
 UPDATE customer
 SET lastname = "Virtanen"
@@ -110,5 +111,5 @@ SELECT customer.id AS customer_id,
   service.id AS service_id,
   service.name AS service_name,
   service.price_per_day
-FROM customer FOR SYSTEM_TIME AS OF (NOW() - INTERVAL 3 SECOND) AS customer
-  INNER JOIN service FOR SYSTEM_TIME AS OF (NOW() - INTERVAL 3 SECOND) AS service ON customer.service_id = service.id;
+FROM customer FOR SYSTEM_TIME AS OF (NOW() - INTERVAL 4 SECOND) AS customer
+  INNER JOIN service FOR SYSTEM_TIME AS OF (NOW() - INTERVAL 4 SECOND) AS service ON customer.service_id = service.id;
