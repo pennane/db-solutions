@@ -48,6 +48,18 @@ This could have been prevented by replacing the `PostalCode` of the record inste
 
 ## 7.
 
+```sql
+CREATE VIEW aggregate_view AS
+SELECT COUNT(p.CallId) as count,
+  AVG(p.price) as avg,
+  MIN(p.price) as min,
+  MAX(p.price) as max
+FROM Phonecall p;
+
+SELECT *
+FROM aggregate_view;
+```
+
 ![alt text](7.png)
 
 ## 8.
